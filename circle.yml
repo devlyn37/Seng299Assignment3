@@ -7,3 +7,4 @@ dependencies:
 test:
   override:
     - nosetests tests/test_worker_basic.py
+    - nosetests tests/test_mothership_basic.py
