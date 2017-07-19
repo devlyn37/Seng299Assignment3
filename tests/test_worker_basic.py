@@ -58,10 +58,10 @@ class TestWorkerBasic(unittest.TestCase):
 
         self.assertEqual(address, worker.original_target)
         
-    def test_worker_init(self):
+    def test_worker_bad_address_in_init(self):
         address = "thisshouldntwork"
         worker = BasicUserParseWorker(address)
-        self.assertRaises(IOError, worker.run)
+        self.assertRaises(WorkerException, worker.run)
         
     def test_worker_add_links(self):
         worker = None
