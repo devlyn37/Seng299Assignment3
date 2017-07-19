@@ -2,8 +2,8 @@
 import unittest
 import codecs
 import os
-import basic_worker
 
+from workers.basic_worker import WorkerException
 from workers.basic_worker import BasicUserParseWorker
 
 
@@ -62,7 +62,7 @@ class TestWorkerBasic(unittest.TestCase):
     def test_worker_bad_address_in_init(self):
         address = "thisshouldntwork"
         worker = BasicUserParseWorker(address)
-        self.assertRaises(basic_worker.WorkerException, worker.run)
+        self.assertRaises(WorkerException, worker.run)
         
     def test_worker_add_links(self):
         worker = None
