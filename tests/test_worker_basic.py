@@ -2,6 +2,7 @@
 import unittest
 import codecs
 import os
+import basic_worker
 
 from workers.basic_worker import BasicUserParseWorker
 
