@@ -61,7 +61,7 @@ class TestWorkerBasic(unittest.TestCase):
     def test_worker_bad_address_in_init(self):
         address = "thisshouldntwork"
         worker = BasicUserParseWorker(address)
-        self.assertRaises(workers.basic_worker.WorkerException, worker.run)
+        self.assertRaises(worker.WorkerException, worker.run)
         
     def test_worker_add_links(self):
         worker = None
