@@ -20,21 +20,6 @@ class TestWorkerBasic(unittest.TestCase):
 
         # Can't connect to mother, so should raise ConnectionRefusedError, but should run everything else
         self.assertRaises(ConnectionRefusedError, worker.run)
-
-    def test_worker_nextpage(self):
-        """
-        Purpose: Test regular parsing mechanisms of worker
-        Expectation: Load html file, send it to worker to parse, should return list of results
-
-        :return:
-        """
-        worker = BasicUserParseWorker("https://www.reddit.com/user/Chrikelnel")
-        len_to_crawl_after = len(worker.to_crawl)
-        worker.run()
-        len_to_crawl_after = len(worker.to_crawl)
-        
-
-        self.assertGreater(len_to_crawl_before, len_to_crawl_after)     # Check that results are returned
        
         
     def test_worker_parsing(self):
@@ -72,6 +57,11 @@ class TestWorkerBasic(unittest.TestCase):
         worker = BasicUserParseWorker(address)
 
         self.assertEqual(address, worker.original_target)
+        
+    def test_worker_init(self):
+        address = "thisshouldntwork"
+        worker = BasicUserParseWorker(address)
+        self.assertRaises(IOError, worker.run)
         
     def test_worker_add_links(self):
         worker = None
